@@ -10,3 +10,7 @@ fun Context.hasNetwork(): Boolean {
     val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
     return activeNetwork != null && activeNetwork.isConnected
 }
+
+fun String?.orString(alternative: String): String {
+  return this ?: alternative
+}
