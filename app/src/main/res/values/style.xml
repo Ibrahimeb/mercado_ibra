@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BaseTextStyle" parent="@style/Theme.Mercado_ibra">
+        <item name="fontFamily">@font/secular_one</item>
+    </style>
+
+    <style name="BaseTextStyle.textStyleHeader1">
+        <item name="android:textSize">@dimen/rds_body_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BaseTextStyle.textStyleHeader1.black">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="BaseTextStyle.textStyleHeader1.blueDark">
+        <item name="android:textColor">@color/blueDark</item>
+    </style>
+
+    <style name="BaseTextStyle.textStyleCaption1">
+        <item name="android:textSize">@dimen/rds_caption_xsize</item>
+    </style>
+
+    <style name="BaseTextStyle.textStyleCaption1.blueLight">
+        <item name="android:textColor">@color/bluelight</item>
+        <item name="android:drawableTint">@color/bluelight</item>
+    </style>
+
+    <style name="BaseTextStyle.textStyleCaption1.green">
+        <item name="android:textColor">@color/green</item>
+    </style>
+
+    <style name="BaseTextStyle.textStyleCaption1.green.bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BaseTextStyle.textStyleCaption2">
+        <item name="android:textSize">@dimen/rds_caption_size</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+</resources>

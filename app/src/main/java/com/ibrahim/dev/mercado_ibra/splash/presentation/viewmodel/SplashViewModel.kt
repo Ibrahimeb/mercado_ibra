@@ -1,12 +1,11 @@
 package com.ibrahim.dev.mercado_ibra.splash.presentation.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.ibrahim.dev.mercado_ibra.commons.network.RequestStatus
 import com.ibrahim.dev.mercado_ibra.splash.domain.contract.SplashCategoriesUseCase
 import com.ibrahim.dev.mercado_ibra.splash.presentation.contract.SplashEvents
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,11 +20,14 @@ class SplashViewModel @Inject constructor(
 
     fun getCategories() {
         viewModelScope.launch {
-            useCase.getCategories().collect {
-                try {
-                    _eventsSplashLiveData.postValue(SplashEvents.CategoriesSuccess(it))
-                } catch (e: Exception) {
-                    _eventsSplashLiveData.postValue(SplashEvents.ErrorCategoriesRequest)
+            useCase.getCategories().collect { status ->
+                when (status){
+                    is RequestStatus.Success -> {
+                        delay(1000)
+                        _eventsSplashLiveData.postValue(SplashEvents.CategoriesSuccess(status.value))
+                    }
+                    is RequestStatus.Error -> _eventsSplashLiveData.postValue(SplashEvents.ErrorCategoriesRequest)
+                    else -> Unit
                 }
             }
         }

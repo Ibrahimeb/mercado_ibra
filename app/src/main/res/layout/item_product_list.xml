@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp">
+
+
+    <ImageView
+        android:id="@+id/imageView_product_img"
+        android:layout_width="@dimen/rds_spacing_empty"
+        android:layout_height="@dimen/rds_spacing_empty"
+        android:layout_marginStart="@dimen/rds_spacing_4"
+        android:layout_marginTop="@dimen/rds_spacing_4"
+        android:layout_marginBottom="@dimen/rds_spacing_4"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_img_end"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/textView_title"
+        style="@style/BaseTextStyle.textStyleHeader1.blueDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/rds_spacing_6"
+        android:fontFamily="@font/secular_one"
+        app:layout_constraintStart_toEndOf="@+id/imageView_product_img"
+        app:layout_constraintTop_toTopOf="@+id/imageView_product_img"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="titulo de los productos" />
+
+    <TextView
+        android:id="@+id/textView_price"
+        style="@style/BaseTextStyle.textStyleHeader1.blueDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/textView_title"
+        app:layout_constraintTop_toBottomOf="@+id/textView_title"
+        tools:text="$ 80000" />
+
+    <TextView
+        android:id="@+id/textView_free_shipping_label"
+        style="@style/BaseTextStyle.textStyleCaption1.green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/textView_price"
+        app:layout_constraintTop_toBottomOf="@+id/textView_price"
+        tools:text="envio gratis"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textView_city"
+        style="@style/BaseTextStyle.textStyleCaption1.blueLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_product_img"
+        app:layout_constraintStart_toStartOf="@+id/textView_free_shipping_label"
+        tools:text="Bogota"
+        app:drawableStartCompat="@drawable/ic_location_on_black" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_img_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".40" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/rds_spacing_1_b"
+        android:background="@color/grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

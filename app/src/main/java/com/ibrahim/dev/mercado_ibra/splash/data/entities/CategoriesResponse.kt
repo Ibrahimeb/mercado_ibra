@@ -2,16 +2,16 @@ package com.ibrahim.dev.mercado_ibra.splash.data.entities
 
 
 import com.google.gson.annotations.SerializedName
-import com.ibrahim.dev.mercado_ibra.splash.domain.models.CategoryModel
+import com.ibrahim.dev.mercado_ibra.splash.domain.models.CategoriesModel
 
-data class CategoryResponse(
+data class CategoriesResponse(
     @SerializedName("id")
     val id: String?,
     @SerializedName("name")
     val name: String?
 ) {
-    fun toModel(): CategoryModel {
-        return CategoryModel(id.orEmpty(), name.orEmpty())
+    fun toModel(): CategoriesModel {
+        return CategoriesModel(id.orEmpty(), name.orEmpty())
     }
 
 }

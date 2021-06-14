@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">mercado_ibra</string>
     <string name="base_url">https://api.mercadolibre.com/sites/MCO/</string>
+
+    <string name="category_title">bienvenido a mercado ibra</string>
+    <string name="category_sub_title">selecciones las categorias de productos de su interes</string>
 </resources>
