@@ -20,7 +20,7 @@ class CategoriesItemView(private val viewBinding: ItemCategoriesBinding) :
 
 
     override fun render(action: (EventsAdapter) -> Unit, dataItem: ViewTypeVh) {
-        val data = (dataItem as ViewTypeVh.ProductCategories).categoriesModel
+        val data = (dataItem as ViewTypeVh.ProductCategories).item
         viewBinding.apply {
             textView.text = data.name
             root.setOnClickListener {

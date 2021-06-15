@@ -1,7 +1,7 @@
 package com.ibrahim.dev.mercado_ibra.app.di
 
 import android.content.Context
-import com.ibrahim.dev.mercado_ibra.app.utils.hasNetwork
+import com.ibrahim.dev.mercado_ibra.commons.utils.hasNetwork
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

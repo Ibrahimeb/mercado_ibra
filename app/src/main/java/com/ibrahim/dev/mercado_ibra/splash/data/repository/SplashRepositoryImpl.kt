@@ -12,7 +12,7 @@ import javax.inject.Inject
 class SplashRepositoryImpl @Inject constructor(
     private val api: SplashApi
 ) : SplashRepository {
-    override suspend fun getCategories(): Flow<RequestStatus<List<CategoriesModel>>> {
+    override fun getCategories(): Flow<RequestStatus<List<CategoriesModel>>> {
         return flow {
             emit(RequestStatus.Loading)
             emit(HandlerResultHelper.getResult { api.getCategories().map { it.toModel() } })

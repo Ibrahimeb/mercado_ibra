@@ -4,14 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ibrahim.dev.mercado_ibra.categories.presentation.viewmodels.CategoriesViewModel
 import com.ibrahim.dev.mercado_ibra.commons.adapter.EventsAdapter
 import com.ibrahim.dev.mercado_ibra.commons.adapter.GeneralAdapter
+import com.ibrahim.dev.mercado_ibra.commons.adapter.ViewTypeVh
 import com.ibrahim.dev.mercado_ibra.databinding.FragmentCategoryBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -53,11 +54,10 @@ class CategoryFragment : Fragment() {
 
     private fun handlerAdapterEvents(events: EventsAdapter) {
         when (events) {
-            is EventsAdapter.SelectedItem -> Toast.makeText(
-                requireContext(),
-                "position ${events.pos}",
-                Toast.LENGTH_SHORT
-            ).show()
+            is EventsAdapter.SelectedItem -> {
+                val data =  (events.dataItem as ViewTypeVh.ProductCategories).item
+                findNavController().navigate(CategoryFragmentDirections.actionCategoryFragmentToHomeFragment(data.code))
+            }
         }
     }
 }

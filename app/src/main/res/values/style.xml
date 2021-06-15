@@ -6,7 +6,7 @@
     </style>
 
     <style name="BaseTextStyle.textStyleHeader1">
-        <item name="android:textSize">@dimen/rds_body_size</item>
+        <item name="android:textSize">@dimen/rds_caption_xsize</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -19,7 +19,7 @@
     </style>
 
     <style name="BaseTextStyle.textStyleCaption1">
-        <item name="android:textSize">@dimen/rds_caption_xsize</item>
+        <item name="android:textSize">@dimen/rds_caption_size</item>
     </style>
 
     <style name="BaseTextStyle.textStyleCaption1.blueLight">
@@ -36,8 +36,13 @@
     </style>
 
     <style name="BaseTextStyle.textStyleCaption2">
-        <item name="android:textSize">@dimen/rds_caption_size</item>
+        <item name="android:textSize">@dimen/rds_small_size</item>
         <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="BaseTextStyle.textStyleCaption2.blueLight">
+        <item name="android:textColor">@color/bluelight</item>
+        <item name="android:drawableTint">@color/bluelight</item>
     </style>
 
 </resources>

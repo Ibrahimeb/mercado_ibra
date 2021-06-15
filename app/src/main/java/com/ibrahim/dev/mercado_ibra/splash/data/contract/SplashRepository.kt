@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface SplashRepository {
 
-  suspend  fun getCategories(): Flow<RequestStatus<List<CategoriesModel>>>
+  fun getCategories(): Flow<RequestStatus<List<CategoriesModel>>>
 }
