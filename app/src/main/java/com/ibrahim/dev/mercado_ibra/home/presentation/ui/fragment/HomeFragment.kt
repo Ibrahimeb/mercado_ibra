@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -30,10 +31,6 @@ class HomeFragment : Fragment() {
         GeneralAdapter(::handlerAdapterEvents)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,6 +43,23 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.launchSearchByCategory(args.categoriesCode)
         initRecyclerView()
+        observerLiveData()
+        onClickListener()
+    }
+
+    private fun onClickListener() {
+        with(binding) {
+            editTextSearch.doAfterTextChanged {
+                if (it.isNullOrEmpty()) {
+                    viewModel.launchSearchByCategory(args.categoriesCode)
+                } else {
+                    viewModel.launchSearchByQuery(it.toString())
+                }
+            }
+        }
+    }
+
+    private fun observerLiveData() {
         viewModel.homeEventsLiveData.observe(viewLifecycleOwner, { event ->
             when (event) {
                 is HomeEvents.SuccessRequest -> homeAdapter.submitList(event.listItem)
