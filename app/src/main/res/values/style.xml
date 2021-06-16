@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="ToolbarDefaultStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">@color/yellow</item>
+    </style>
+
     <style name="BaseTextStyle" parent="@style/Theme.Mercado_ibra">
         <item name="fontFamily">@font/secular_one</item>
+    </style>
+
+    <style name="BaseTextStyle.textStyleTitleDetail">
+        <item name="android:textSize">@dimen/rds_body_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BaseTextStyle.textStyleTitleDetail.blueDark">
+        <item name="android:textColor">@color/blueDark</item>
     </style>
 
     <style name="BaseTextStyle.textStyleHeader1">

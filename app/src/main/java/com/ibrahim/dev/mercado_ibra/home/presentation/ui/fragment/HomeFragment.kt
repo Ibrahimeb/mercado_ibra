@@ -8,10 +8,12 @@ import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ibrahim.dev.mercado_ibra.commons.adapter.EventsAdapter
 import com.ibrahim.dev.mercado_ibra.commons.adapter.GeneralAdapter
+import com.ibrahim.dev.mercado_ibra.commons.adapter.ViewTypeVh
 import com.ibrahim.dev.mercado_ibra.commons.utils.showOrHide
 import com.ibrahim.dev.mercado_ibra.databinding.FragmentHomeBinding
 import com.ibrahim.dev.mercado_ibra.home.presentation.contract.HomeEvents
@@ -83,8 +85,14 @@ class HomeFragment : Fragment() {
 
     private fun handlerAdapterEvents(events: EventsAdapter) {
         when (events) {
-            is EventsAdapter.SelectedItem
-            -> Toast.makeText(requireContext(), "${events.pos}", Toast.LENGTH_SHORT).show()
+            is EventsAdapter.SelectedItem -> {
+                val data = (events.dataItem as ViewTypeVh.ProductListBySearch)
+                findNavController().navigate(
+                    HomeFragmentDirections.actionHomeFragmentToProductDetailFragment(
+                        data.item.id
+                    )
+                )
+            }
         }
 
     }

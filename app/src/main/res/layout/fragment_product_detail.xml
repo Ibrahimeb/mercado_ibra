@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".details.presentation.ui.fragment.ProductDetailFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        style="@style/ToolbarDefaultStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="details" />
+
+    <TextView
+        android:id="@+id/textView_title"
+        style="@style/BaseTextStyle.textStyleTitleDetail.blueDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/rds_spacing_6"
+        android:layout_marginTop="@dimen/rds_spacing_6"
+        android:textSize="@dimen/rds_headline_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        tools:text="titulo del producto" />
+
+    <TextView
+        android:id="@+id/textView_sold_quantity"
+        style="@style/BaseTextStyle.textStyleCaption2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/rds_spacing_2"
+        android:textSize="@dimen/rds_caption_xsize"
+        app:layout_constraintStart_toStartOf="@+id/textView_title"
+        app:layout_constraintTop_toBottomOf="@+id/textView_title"
+        tools:text="@string/fragment_detail_sold_quantity" />
+
+    <ImageView
+        android:id="@+id/imageView_product_img"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/rds_icon_size_150"
+        android:layout_marginStart="@dimen/rds_spacing_8"
+        android:layout_marginTop="@dimen/rds_spacing_4"
+        android:layout_marginEnd="@dimen/rds_spacing_8"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_sold_quantity"
+        app:srcCompat="@drawable/placeholder" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".4" />
+
+    <TextView
+        android:id="@+id/textView_price"
+        style="@style/BaseTextStyle.textStyleHeader1.black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/rds_spacing_6"
+        android:layout_marginTop="@dimen/rds_spacing_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        tools:text="80.000" />
+
+    <TextView
+        android:id="@+id/textView_available_quantity"
+        style="@style/BaseTextStyle.textStyleCaption2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/textView_price"
+        app:layout_constraintTop_toBottomOf="@+id/textView_price"
+        tools:text="10 unidades disponible" />
+
+    <TextView
+        android:id="@+id/textView_free_shipping_label"
+        style="@style/BaseTextStyle.textStyleCaption1.green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Envio gratis"
+        app:layout_constraintStart_toStartOf="@+id/textView_available_quantity"
+        app:layout_constraintTop_toBottomOf="@+id/textView_available_quantity" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:backgroundTint="@color/blueDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

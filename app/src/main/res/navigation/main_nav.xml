@@ -35,5 +35,17 @@
         <argument
             android:name="categoriesCode"
             app:argType="string" />
+        <action
+            android:id="@+id/action_homeFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.ibrahim.dev.mercado_ibra.details.presentation.ui.fragment.ProductDetailFragment"
+        android:label="fragment_product_detail"
+        tools:layout="@layout/fragment_product_detail" >
+        <argument
+            android:name="productId"
+            app:argType="string" />
     </fragment>
 </navigation>
