@@ -65,7 +65,7 @@ class ProductDetailFragment : Fragment() {
             Glide.with(requireContext())
                 .load(item.imageUrl)
                 .placeholder(R.drawable.placeholder)
-                .centerCrop()
+                .fitCenter()
                 .into(imageViewProductImg)
         }
     }

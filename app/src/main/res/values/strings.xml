@@ -8,6 +8,7 @@
 
     <string name="fragment_detail_sold_quantity">%d unidades vendidas</string>
     <string name="fragment_detail_available_quantity">%d unidades disponible</string>
+    <string name="price_symbol">$ %d</string>
     
     <string name="free_shipping">Envio Gratis</string>
 </resources>
