@@ -2,7 +2,7 @@ package com.ibrahim.dev.mercado_ibra.splash.presentation.viewmodel
 
 import androidx.lifecycle.*
 import com.ibrahim.dev.mercado_ibra.commons.network.RequestStatus
-import com.ibrahim.dev.mercado_ibra.splash.domain.contract.SplashCategoriesUseCase
+import com.ibrahim.dev.mercado_ibra.splash.domain.contract.SplashSitesUseCase
 import com.ibrahim.dev.mercado_ibra.splash.presentation.contract.SplashEvents
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -12,19 +12,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
-    private val useCase: SplashCategoriesUseCase
+    private val useCase: SplashSitesUseCase
 ) : ViewModel() {
 
     private val _eventsSplashLiveData = MutableLiveData<SplashEvents>()
     val eventsSplashLiveData: LiveData<SplashEvents> get() = _eventsSplashLiveData
 
-    fun getCategories() {
+    fun getSites() {
         viewModelScope.launch {
-            useCase.getCategories().collect { status ->
+            useCase.getSites().collect { status ->
                 when (status){
                     is RequestStatus.Success -> {
                         delay(1000)
-                        _eventsSplashLiveData.postValue(SplashEvents.CategoriesSuccess(status.value))
+                        _eventsSplashLiveData.postValue(SplashEvents.SitesSuccess(status.value))
                     }
                     is RequestStatus.Error -> _eventsSplashLiveData.postValue(SplashEvents.ErrorCategoriesRequest)
                     else -> Unit

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">mercado_ibra</string>
-    <string name="base_url">https://api.mercadolibre.com/sites/MCO/</string>
+    <string name="base_url">https://api.mercadolibre.com/sites/</string>
     <string name="base_url_not_side">https://api.mercadolibre.com/</string>
 
     <string name="category_title">bienvenido a mercado ibra</string>

@@ -1,4 +1,4 @@
-package com.ibrahim.dev.mercado_ibra.categories.presentation.ui.fratments
+package com.ibrahim.dev.mercado_ibra.sites.presentation.ui.fratments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,21 +9,21 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ibrahim.dev.mercado_ibra.categories.presentation.viewmodels.CategoriesViewModel
+import com.ibrahim.dev.mercado_ibra.sites.presentation.viewmodels.SitesViewModel
 import com.ibrahim.dev.mercado_ibra.commons.adapter.EventsAdapter
 import com.ibrahim.dev.mercado_ibra.commons.adapter.GeneralAdapter
 import com.ibrahim.dev.mercado_ibra.commons.adapter.ViewTypeVh
-import com.ibrahim.dev.mercado_ibra.databinding.FragmentCategoryBinding
+import com.ibrahim.dev.mercado_ibra.databinding.FragmentSitesBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CategoryFragment : Fragment() {
+class SitesFragment : Fragment() {
 
-    lateinit var binding: FragmentCategoryBinding
+    lateinit var binding: FragmentSitesBinding
 
-    private val args: CategoryFragmentArgs by navArgs()
+    private val args: SitesFragmentArgs by navArgs()
 
-    private val viewModel: CategoriesViewModel by viewModels()
+    private val viewModel: SitesViewModel by viewModels()
 
     private val categoriesAdapter: GeneralAdapter by lazy {
         GeneralAdapter(::handlerAdapterEvents)
@@ -33,7 +33,7 @@ class CategoryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCategoryBinding.inflate(inflater, container, false)
+        binding = FragmentSitesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -48,15 +48,15 @@ class CategoryFragment : Fragment() {
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         }
-        categoriesAdapter.submitList(viewModel.mapListAdapterList(args.listCategories.toList()))
+        categoriesAdapter.submitList(viewModel.mapListAdapterList(args.listSites.toList()))
     }
 
 
     private fun handlerAdapterEvents(events: EventsAdapter) {
         when (events) {
             is EventsAdapter.SelectedItem -> {
-                val data =  (events.dataItem as ViewTypeVh.ProductCategories).item
-                findNavController().navigate(CategoryFragmentDirections.actionCategoryFragmentToHomeFragment(data.code))
+                val data =  (events.dataItem as ViewTypeVh.Sites).item
+                findNavController().navigate(SitesFragmentDirections.actionCategoryFragmentToHomeFragment(data.id))
             }
         }
     }

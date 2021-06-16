@@ -11,7 +11,10 @@ class SearchByQueryUseCaseImpl @Inject constructor(
     private val repository: HomeRepository
 ) : SearchByQueryUseCase {
 
-    override fun search(category: String): Flow<RequestStatus<List<ProductListModel>>> {
-        return repository.searchByQuery(category)
+    override fun search(
+        category: String,
+        sitesCode: String
+    ): Flow<RequestStatus<List<ProductListModel>>> {
+        return repository.searchByQuery(category, sitesCode)
     }
 }

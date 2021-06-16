@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface SearchByQueryUseCase {
 
-    fun search(category: String): Flow<RequestStatus<List<ProductListModel>>>
+    fun search(category: String, sitesCode: String): Flow<RequestStatus<List<ProductListModel>>>
 }

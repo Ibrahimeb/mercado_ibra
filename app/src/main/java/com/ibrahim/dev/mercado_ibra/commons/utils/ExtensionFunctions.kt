@@ -5,6 +5,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.view.View
 import android.widget.Toast
+import com.ibrahim.dev.mercado_ibra.commons.adapter.ViewTypeVh
 
 fun Context.hasNetwork(): Boolean {
     val connectivityManager: ConnectivityManager =

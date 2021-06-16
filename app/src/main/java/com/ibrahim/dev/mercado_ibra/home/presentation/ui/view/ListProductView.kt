@@ -25,10 +25,8 @@ class ListProductView(private val viewBinding: ItemProductListBinding) :
         viewBinding.apply {
             textViewTitle.text = data.title
             textViewCity.text = data.city
-            textViewPrice.text = String.format(
-                viewBinding.root.context.getString(R.string.price_symbol),
-                data.price.toString()
-            )
+            textViewPrice.text = data.price.toString()
+
             textViewFreeShippingLabel.showOrHide(data.hasFreeShipping)
 
             Glide.with(viewBinding.root.context)

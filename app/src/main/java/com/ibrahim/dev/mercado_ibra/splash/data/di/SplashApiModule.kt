@@ -1,5 +1,6 @@
 package com.ibrahim.dev.mercado_ibra.splash.data.di
 
+import com.ibrahim.dev.mercado_ibra.app.di.UrlWithOutSites
 import com.ibrahim.dev.mercado_ibra.splash.data.network.SplashApi
 import dagger.Module
 import dagger.Provides
@@ -14,7 +15,7 @@ class SplashApiModule {
 
 
     @Provides
-    fun providerApi(retrofit: Retrofit): SplashApi {
+    fun providerApi(@UrlWithOutSites retrofit: Retrofit): SplashApi {
         return retrofit.create(SplashApi::class.java)
     }
 }

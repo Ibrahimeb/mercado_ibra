@@ -30,22 +30,18 @@ data class Result(
     val domainId: String?,
     @SerializedName("id")
     val id: String?,
-    @SerializedName("installments")
-    val installments: Installments?,
     @SerializedName("listing_type_id")
     val listingTypeId: String?,
     @SerializedName("official_store_id")
-    val officialStoreId: Any?,
+    val officialStoreId: String?,
     @SerializedName("order_backend")
     val orderBackend: Int?,
     @SerializedName("original_price")
-    val originalPrice: Any?,
+    val originalPrice: Double?,
     @SerializedName("permalink")
     val permalink: String?,
     @SerializedName("price")
-    val price: Int?,
-    @SerializedName("prices")
-    val prices: Prices?,
+    val price: Double?,
     @SerializedName("sale_price")
     val salePrice: Any?,
     @SerializedName("seller")

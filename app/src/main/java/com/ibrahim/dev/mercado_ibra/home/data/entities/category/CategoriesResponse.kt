@@ -1,8 +1,8 @@
-package com.ibrahim.dev.mercado_ibra.splash.data.entities
+package com.ibrahim.dev.mercado_ibra.home.data.entities.category
 
 
 import com.google.gson.annotations.SerializedName
-import com.ibrahim.dev.mercado_ibra.splash.domain.models.CategoriesModel
+import com.ibrahim.dev.mercado_ibra.home.domain.models.CategoriesModel
 
 data class CategoriesResponse(
     @SerializedName("id")

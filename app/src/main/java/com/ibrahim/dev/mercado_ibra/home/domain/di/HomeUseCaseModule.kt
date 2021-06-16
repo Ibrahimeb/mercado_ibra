@@ -1,7 +1,9 @@
 package com.ibrahim.dev.mercado_ibra.home.domain.di
 
+import com.ibrahim.dev.mercado_ibra.home.domain.contract.CategoriesUseCase
 import com.ibrahim.dev.mercado_ibra.home.domain.contract.SearchByCategoryUseCase
 import com.ibrahim.dev.mercado_ibra.home.domain.contract.SearchByQueryUseCase
+import com.ibrahim.dev.mercado_ibra.home.domain.usecase.CategoriesUseCaseImpl
 import com.ibrahim.dev.mercado_ibra.home.domain.usecase.SearchByCategoryUseCaseImpl
 import com.ibrahim.dev.mercado_ibra.home.domain.usecase.SearchByQueryUseCaseImpl
 import dagger.Binds
@@ -22,4 +24,8 @@ abstract class HomeUseCaseModule {
         useCase: SearchByQueryUseCaseImpl
     ): SearchByQueryUseCase
 
+    @Binds
+    abstract fun bindsUseCaseCategories(
+        useCase: CategoriesUseCaseImpl
+    ): CategoriesUseCase
 }
