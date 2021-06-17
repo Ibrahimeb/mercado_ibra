@@ -77,7 +77,7 @@ class HomeFragment : Fragment() {
             when (event) {
                 is HomeEvents.SuccessRequest -> {
                     binding.apply {
-                        rvGroup.show()
+                        recyclerView.show()
                         includeError.root.hide()
                     }
                     handlerSuccessData(event.listItem)
