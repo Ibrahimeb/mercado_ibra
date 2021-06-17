@@ -5,6 +5,7 @@ data class ProductListModel(
     val title: String,
     val urlImage: String,
     val price: Double?,
+    val currency: String,
     val availableQuantity: Int?,
     val sellerQuantity: Int?,
     val city: String,

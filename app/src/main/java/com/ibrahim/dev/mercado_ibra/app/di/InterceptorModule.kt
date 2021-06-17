@@ -9,9 +9,12 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 
 import okhttp3.Cache
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import java.io.File
+import javax.inject.Qualifier
 
 @Module
 @InstallIn(SingletonComponent::class)

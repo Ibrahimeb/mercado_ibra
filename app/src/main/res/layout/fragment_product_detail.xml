@@ -12,16 +12,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="details" />
+        app:title="Detalles" />
 
     <TextView
         android:id="@+id/textView_title"
         style="@style/BaseTextStyle.textStyleTitleDetail.blueDark"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/rds_spacing_6"
         android:layout_marginTop="@dimen/rds_spacing_6"
+        android:layout_marginEnd="@dimen/rds_spacing_6"
         android:textSize="@dimen/rds_headline_size"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar2"
         tools:text="titulo del producto" />
@@ -84,18 +86,73 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Envio gratis"
+        android:text="@string/free_shipping"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/textView_available_quantity"
-        app:layout_constraintTop_toBottomOf="@+id/textView_available_quantity" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_available_quantity"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textView_title_seller_ub"
+        style="@style/BaseTextStyle.textStyleHeader1.black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/rds_spacing_6"
+        android:text="@string/detail_ubication_seller_title"
+        app:layout_constraintStart_toStartOf="@+id/textView_price"
+        app:layout_constraintTop_toBottomOf="@+id/textView_free_shipping_label" />
+
+    <TextView
+        android:id="@+id/textView_city"
+        style="@style/BaseTextStyle.textStyleCaption1.blueLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/rds_spacing_4"
+        app:layout_constraintStart_toStartOf="@+id/textView_title_seller_ub"
+        app:layout_constraintTop_toBottomOf="@+id/textView_title_seller_ub"
+        tools:text="Bogota DC"
+        app:drawableStartCompat="@drawable/ic_location_on_black" />
+
+    <include
+        android:id="@+id/include_error"
+        layout="@layout/include_error_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
-        android:backgroundTint="@color/blueDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:progressTint="@color/blueDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        tools:visibility="gone" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/success_gruop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="imageView_product_img"
+        />
+
+
+    <ImageView
+        android:id="@+id/imageView_mercado_pago"
+        android:layout_width="@dimen/rds_icon_size_40"
+        android:layout_height="@dimen/rds_icon_size_40"
+        android:layout_marginEnd="@dimen/rds_spacing_4"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView_price"
+        app:srcCompat="@drawable/mercado_pago"
+        tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>

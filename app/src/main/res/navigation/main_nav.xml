@@ -13,7 +13,8 @@
         <action
             android:id="@+id/action_splashFragment_to_categoryFragment"
             app:destination="@id/categoryFragment"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/main_nav"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"

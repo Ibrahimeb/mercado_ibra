@@ -25,7 +25,11 @@ class ListProductView(private val viewBinding: ItemProductListBinding) :
         viewBinding.apply {
             textViewTitle.text = data.title
             textViewCity.text = data.city
-            textViewPrice.text = data.price.toString()
+            textViewPrice.text = String.format(
+                viewBinding.root.context.getString(R.string.price_concat),
+                data.currency,
+                data.price.toString()
+            )
 
             textViewFreeShippingLabel.showOrHide(data.hasFreeShipping)
 

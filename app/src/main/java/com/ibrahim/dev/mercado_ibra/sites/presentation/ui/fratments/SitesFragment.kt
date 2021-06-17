@@ -51,7 +51,6 @@ class SitesFragment : Fragment() {
         categoriesAdapter.submitList(viewModel.mapListAdapterList(args.listSites.toList()))
     }
 
-
     private fun handlerAdapterEvents(events: EventsAdapter) {
         when (events) {
             is EventsAdapter.SelectedItem -> {

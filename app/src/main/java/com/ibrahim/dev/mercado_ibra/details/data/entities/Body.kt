@@ -12,31 +12,23 @@ data class Body(
     @SerializedName("available_quantity")
     val availableQuantity: Int?,
     @SerializedName("base_price")
-    val basePrice: Int?,
+    val basePrice: Double?,
     @SerializedName("buying_mode")
     val buyingMode: String?,
     @SerializedName("catalog_listing")
     val catalogListing: Boolean?,
-    @SerializedName("catalog_product_id")
-    val catalogProductId: Any?,
     @SerializedName("category_id")
     val categoryId: String?,
     @SerializedName("channels")
     val channels: List<String>?,
     @SerializedName("condition")
     val condition: String?,
-    @SerializedName("coverage_areas")
-    val coverageAreas: List<Any>?,
     @SerializedName("currency_id")
     val currencyId: String?,
     @SerializedName("date_created")
     val dateCreated: String?,
-    @SerializedName("deal_ids")
-    val dealIds: List<Any>?,
     @SerializedName("descriptions")
     val descriptions: List<Description>?,
-    @SerializedName("differential_pricing")
-    val differentialPricing: Any?,
     @SerializedName("domain_id")
     val domainId: String?,
     @SerializedName("health")
@@ -55,20 +47,12 @@ data class Body(
     val listingTypeId: String?,
     @SerializedName("location")
     val location: Location?,
-    @SerializedName("non_mercado_pago_payment_methods")
-    val nonMercadoPagoPaymentMethods: List<Any>?,
-    @SerializedName("official_store_id")
-    val officialStoreId: Any?,
-    @SerializedName("original_price")
-    val originalPrice: Any?,
-    @SerializedName("parent_item_id")
-    val parentItemId: Any?,
     @SerializedName("permalink")
     val permalink: String?,
     @SerializedName("pictures")
     val pictures: List<Picture>?,
     @SerializedName("price")
-    val price: Int?,
+    val price: Double?,
     @SerializedName("sale_terms")
     val saleTerms: List<SaleTerm>?,
     @SerializedName("secure_thumbnail")
@@ -91,24 +75,12 @@ data class Body(
     val status: String?,
     @SerializedName("stop_time")
     val stopTime: String?,
-    @SerializedName("sub_status")
-    val subStatus: List<Any>?,
-    @SerializedName("subtitle")
-    val subtitle: Any?,
-    @SerializedName("tags")
-    val tags: List<String>?,
     @SerializedName("thumbnail")
     val thumbnail: String?,
     @SerializedName("thumbnail_id")
     val thumbnailId: String?,
     @SerializedName("title")
     val title: String?,
-    @SerializedName("variations")
-    val variations: List<Any>?,
-    @SerializedName("video_id")
-    val videoId: Any?,
-    @SerializedName("warnings")
-    val warnings: List<Any>?,
     @SerializedName("warranty")
     val warranty: String?
 )

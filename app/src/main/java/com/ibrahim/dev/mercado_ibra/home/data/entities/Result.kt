@@ -42,8 +42,8 @@ data class Result(
     val permalink: String?,
     @SerializedName("price")
     val price: Double?,
-    @SerializedName("sale_price")
-    val salePrice: Any?,
+    @SerializedName("prices")
+    val prices: Prices?,
     @SerializedName("seller")
     val seller: Seller?,
     @SerializedName("seller_address")

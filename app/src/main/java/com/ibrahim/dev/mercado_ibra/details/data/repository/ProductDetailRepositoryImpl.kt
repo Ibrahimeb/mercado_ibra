@@ -1,5 +1,6 @@
 package com.ibrahim.dev.mercado_ibra.details.data.repository
 
+import com.ibrahim.dev.mercado_ibra.commons.network.HandlerResultHelper
 import com.ibrahim.dev.mercado_ibra.commons.network.RequestStatus
 import com.ibrahim.dev.mercado_ibra.details.data.contracts.ProductDetailsRepository
 import com.ibrahim.dev.mercado_ibra.details.data.network.ProductDetailApi
@@ -14,7 +15,7 @@ class ProductDetailRepositoryImpl @Inject constructor(
     override fun getItemsById(productId: String): Flow<RequestStatus<ProductDetailsModel>> {
         return flow {
             emit(RequestStatus.Loading)
-            emit(RequestStatus.Success(api.getItem(productId)[0].toModel()))
+            emit(HandlerResultHelper.getResult { (api.getItem(productId)[0].toModel()) })
         }
     }
 }

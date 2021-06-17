@@ -9,13 +9,13 @@
 
 
     <ImageView
-        android:layout_width="140dp"
-        android:layout_height="140dp"
+        android:layout_width="@dimen/rds_icon_size_200"
+        android:layout_height="@dimen/rds_icon_size_200"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/monograma_ie" />
+        app:srcCompat="@drawable/logo_splash" />
 </androidx.constraintlayout.widget.ConstraintLayout>

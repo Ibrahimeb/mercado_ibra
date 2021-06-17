@@ -12,26 +12,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
         <EditText
             android:id="@+id/editText_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/rds_spacing_4"
+            android:layout_margin="@dimen/rds_spacing_2"
+            android:paddingStart="@dimen/rds_spacing_2"
+            android:paddingEnd="@dimen/rds_spacing_2"
+            android:paddingTop="@dimen/rds_spacing_1"
+            android:background="@drawable/background_search_field"
             android:drawableEnd="@drawable/ic_search_black_24dp"
-            android:hint="search something" />
-
+            android:hint="@string/search_copy"
+            />
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_categories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="horizontal"
         tools:itemCount="6"
         tools:listitem="@layout/item_category" />
 
@@ -45,7 +48,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView_categories"
         tools:itemCount="6"
-        tools:listitem="@layout/item_product_list" />
+        tools:listitem="@layout/item_product_list"
+        tools:visibility="visible" />
+
+    <include
+        android:id="@+id/include_error"
+        layout="@layout/include_error_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/rv_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        app:constraint_referenced_ids="recyclerView,recyclerView_categories" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -57,6 +79,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/recyclerView"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

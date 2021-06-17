@@ -5,7 +5,6 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.view.View
 import android.widget.Toast
-import com.ibrahim.dev.mercado_ibra.commons.adapter.ViewTypeVh
 
 fun Context.hasNetwork(): Boolean {
     val connectivityManager: ConnectivityManager =
@@ -28,12 +27,20 @@ fun Boolean?.orFalse(): Boolean {
 
 fun View.showOrHide(isVisibility: Boolean) {
     if (isVisibility) {
-        this.visibility = View.VISIBLE
+        this.show()
     } else {
-        this.visibility = View.GONE
+        this.hide()
     }
 }
 
-fun Context.makeToast(msg:String){
+fun View.show() {
+    this.visibility = View.VISIBLE
+}
+
+fun View.hide() {
+    this.visibility = View.GONE
+}
+
+fun Context.makeToast(msg: String) {
     Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 }

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -14,9 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ibrahim.dev.mercado_ibra.commons.adapter.EventsAdapter
 import com.ibrahim.dev.mercado_ibra.commons.adapter.GeneralAdapter
 import com.ibrahim.dev.mercado_ibra.commons.adapter.ViewTypeVh
-import com.ibrahim.dev.mercado_ibra.commons.utils.makeToast
+import com.ibrahim.dev.mercado_ibra.commons.utils.hide
+import com.ibrahim.dev.mercado_ibra.commons.utils.show
 import com.ibrahim.dev.mercado_ibra.commons.utils.showOrHide
 import com.ibrahim.dev.mercado_ibra.databinding.FragmentHomeBinding
+import com.ibrahim.dev.mercado_ibra.home.domain.models.CategoriesModel
 import com.ibrahim.dev.mercado_ibra.home.presentation.contract.HomeEvents
 import com.ibrahim.dev.mercado_ibra.home.presentation.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -58,11 +59,13 @@ class HomeFragment : Fragment() {
         with(binding) {
             editTextSearch.doAfterTextChanged {
                 if (it.isNullOrEmpty()) {
+                    recyclerViewCategories.show()
                     viewModel.launchSearchByCategory(
-                        viewModel.categorySelectedLiveData.value?.code.orEmpty(),
+                        viewModel.lastCodeSelectedItem,
                         sitesCode = args.sitesCode
                     )
                 } else {
+                    recyclerViewCategories.hide()
                     viewModel.launchSearchByQuery(it.toString(), args.sitesCode)
                 }
             }
@@ -72,14 +75,27 @@ class HomeFragment : Fragment() {
     private fun observerLiveData() {
         viewModel.homeEventsLiveData.observe(viewLifecycleOwner, { event ->
             when (event) {
-                is HomeEvents.SuccessRequest -> handlerSuccessData(event.listItem)
-                is HomeEvents.ErrorRequest -> Toast.makeText(
-                    requireContext(),
-                    event.msg,
-                    Toast.LENGTH_SHORT
-                ).show()
+                is HomeEvents.SuccessRequest -> {
+                    binding.apply {
+                        rvGroup.show()
+                        includeError.root.hide()
+                    }
+                    handlerSuccessData(event.listItem)
+                }
+                is HomeEvents.ErrorRequest -> {
+                    binding.apply {
+                        includeError.textViewErrorMsg.text = event.msg
+                        rvGroup.hide()
+                        includeError.root.show()
+                    }
+                }
                 is HomeEvents.Loading -> binding.progressBar.showOrHide(event.isLoading)
-                HomeEvents.NotFountItems -> requireContext().makeToast("no se encontro item")
+                is HomeEvents.NotFountItems -> {
+                    binding.apply {
+                        rvGroup.hide()
+                        includeError.root.show()
+                    }
+                }
             }
         })
     }
@@ -109,11 +125,11 @@ class HomeFragment : Fragment() {
 
     private fun handlerAdapterEvents(events: EventsAdapter) {
         when (events) {
-            is EventsAdapter.SelectedItem -> handlerSelectedItemAdapter(events.dataItem)
+            is EventsAdapter.SelectedItem -> handlerSelectedItemAdapter(events.pos, events.dataItem)
         }
     }
 
-    private fun handlerSelectedItemAdapter(dataItem: ViewTypeVh) {
+    private fun handlerSelectedItemAdapter(pos: Int, dataItem: ViewTypeVh) {
         when (dataItem) {
             is ViewTypeVh.ProductListBySearch -> {
                 findNavController().navigate(
@@ -123,9 +139,21 @@ class HomeFragment : Fragment() {
                 )
             }
             is ViewTypeVh.ProductCategories -> {
+                mapNewItemSelected(pos, dataItem.item)
                 viewModel.launchSearchByCategory(dataItem.item.code, args.sitesCode)
             }
             else -> Unit
         }
+    }
+
+    private fun mapNewItemSelected(pos: Int, item: CategoriesModel) {
+        val listAux: MutableList<CategoriesModel> = mutableListOf()
+        listAux.addAll(viewModel.listCategories)
+        listAux.apply {
+            removeAt(pos)
+            add(0, item.copy(code = item.code, name = item.name, isSelected = true))
+        }
+        categoryAdapter.submitList(listAux.map { ViewTypeVh.ProductCategories(it) })
+        listAux.clear()
     }
 }

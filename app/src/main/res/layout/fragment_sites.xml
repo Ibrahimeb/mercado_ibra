@@ -7,10 +7,11 @@
 
     <TextView
         android:id="@+id/textView_title"
+        style="@style/BaseTextStyle.textStyleTitleDetail.blueDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="@string/category_title"
+        android:text="@string/sites_title"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,12 +20,13 @@
 
     <TextView
         android:id="@+id/textView_sub_title"
+        style="@style/BaseTextStyle.textStyleHeader1.blueDark"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:text="@string/category_sub_title"
+        android:layout_marginStart="@dimen/rds_spacing_6"
+        android:layout_marginTop="@dimen/rds_spacing_6"
+        android:layout_marginEnd="@dimen/rds_spacing_6"
+        android:text="@string/sites_sub_title"
         android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -37,9 +39,9 @@
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="@dimen/rds_spacing_6"
+        android:layout_marginTop="@dimen/rds_spacing_4"
+        android:layout_marginEnd="@dimen/rds_spacing_6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_sub_title" />

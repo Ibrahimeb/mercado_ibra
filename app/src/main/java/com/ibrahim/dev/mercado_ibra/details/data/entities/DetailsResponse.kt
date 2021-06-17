@@ -19,11 +19,11 @@ data class DetailsResponse(
         body?.currencyId.orEmpty(),
         body?.pictures?.get(0)?.url.orEmpty(),
         body?.initialQuantity.orZero(),
-        body?.price.orZero(),
+        body?.price ?: 0.0,
         body?.soldQuantity.orZero(),
         body?.sellerAddress?.state?.name.orEmpty(),
         body?.title.orEmpty(),
         body?.warranty.orEmpty(),
-        body?.shipping?.freeShipping.orFalse()
+        body?.shipping?.freeShipping.orFalse(),
     )
 }

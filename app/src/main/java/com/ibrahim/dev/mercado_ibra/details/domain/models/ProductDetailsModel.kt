@@ -7,10 +7,10 @@ data class ProductDetailsModel(
     val currencyId: String,
     val imageUrl: String,
     val initialQuantity: Int,
-    val price: Int,
+    val price: Double,
     val soldQuantity: Int,
     val state: String,
     val title: String,
     val warranty: String,
-    val freeShipping: Boolean
+    val freeShipping: Boolean,
 )

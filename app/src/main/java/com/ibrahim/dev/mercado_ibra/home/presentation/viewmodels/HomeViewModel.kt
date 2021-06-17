@@ -27,8 +27,8 @@ class HomeViewModel @Inject constructor(
     private val _homeEventsLiveData = MutableLiveData<HomeEvents>()
     val homeEventsLiveData: LiveData<HomeEvents> get() = _homeEventsLiveData
 
-    private val _categorySelectedLiveData = MutableLiveData<CategoriesModel>()
-    val categorySelectedLiveData: LiveData<CategoriesModel> get() = _categorySelectedLiveData
+    var lastCodeSelectedItem: String = ""
+    val listCategories: MutableList<CategoriesModel> = mutableListOf()
 
     fun getCategoriesBySites(sitesCode: String) {
         viewModelScope.launch {
@@ -49,17 +49,17 @@ class HomeViewModel @Inject constructor(
         listCategories: List<CategoriesModel>,
         sitesCode: String
     ) {
-        val randomIndex = (listCategories.indices).random()
-        val randomItem = listCategories[randomIndex]
-        launchSearchByCategory(randomItem.code, sitesCode)
-        _categorySelectedLiveData.value = randomItem
+        launchSearchByCategory(listCategories[0].code, sitesCode)
+        this.listCategories.addAll(listCategories)
+        lastCodeSelectedItem = listCategories[0].code
         _homeEventsLiveData.value =
-            HomeEvents.SuccessRequest(listCategories.map {item ->
+            HomeEvents.SuccessRequest(listCategories.map { item ->
                 ViewTypeVh.ProductCategories(item)
             })
     }
 
     fun launchSearchByCategory(category: String, sitesCode: String) {
+        lastCodeSelectedItem = category
         viewModelScope.launch {
             searchByCategoryUseCase.search(category, sitesCode).collect(::handlerStatus)
         }

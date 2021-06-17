@@ -9,7 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.ibrahim.dev.mercado_ibra.R
-import com.ibrahim.dev.mercado_ibra.commons.utils.makeToast
+import com.ibrahim.dev.mercado_ibra.commons.utils.hide
+import com.ibrahim.dev.mercado_ibra.commons.utils.show
 import com.ibrahim.dev.mercado_ibra.commons.utils.showOrHide
 import com.ibrahim.dev.mercado_ibra.databinding.FragmentProductDetailBinding
 import com.ibrahim.dev.mercado_ibra.details.domain.models.ProductDetailsModel
@@ -44,7 +45,13 @@ class ProductDetailFragment : Fragment() {
         viewModel.eventsDetailsLiveData.observe(viewLifecycleOwner, { event ->
             when (event) {
                 is DetailsEvent.Loading -> binding.progressBar.showOrHide(event.isLoading)
-                is DetailsEvent.ErrorRequest -> requireActivity().makeToast(event.msg)
+                is DetailsEvent.ErrorRequest -> {
+                    binding.apply {
+                        includeError.textViewErrorMsg.text = event.msg
+                        successGruop.hide()
+                        includeError.root.show()
+                    }
+                }
                 is DetailsEvent.SuccessRequest -> setupData(event.product)
             }
         })
@@ -55,12 +62,20 @@ class ProductDetailFragment : Fragment() {
             textViewTitle.text = item.title
             textViewSoldQuantity.text =
                 String.format(getString(R.string.fragment_detail_sold_quantity), item.soldQuantity)
-            textViewPrice.text = item.price.toString()
+            textViewPrice.text = String.format(
+                getString(R.string.price_concat),
+                item.currencyId,
+                item.price.toString()
+            )
             textViewAvailableQuantity.text = String.format(
-                getString(R.string.fragment_detail_sold_quantity),
+                getString(R.string.fragment_detail_available_quantity),
                 item.availableQuantity
             )
             textViewFreeShippingLabel.showOrHide(item.freeShipping)
+            imageViewMercadoPago.showOrHide(item.acceptsMercadoPago)
+
+
+            textViewCity.text = item.city
 
             Glide.with(requireContext())
                 .load(item.imageUrl)

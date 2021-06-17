@@ -2,6 +2,7 @@ package com.ibrahim.dev.mercado_ibra.home.data.entities
 
 
 import com.google.gson.annotations.SerializedName
+import com.ibrahim.dev.mercado_ibra.commons.utils.orAlternative
 import com.ibrahim.dev.mercado_ibra.commons.utils.orFalse
 import com.ibrahim.dev.mercado_ibra.home.domain.models.ProductListModel
 
@@ -34,6 +35,7 @@ data class ProductListResponse(
                 item.title.orEmpty(),
                 item.thumbnail.orEmpty(),
                 item.price,
+                item.prices?.prices?.get(0)?.currencyId.orAlternative("$"),
                 item.availableQuantity,
                 item.soldQuantity,
                 item.address?.stateName.orEmpty(),

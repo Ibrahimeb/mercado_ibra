@@ -1,14 +1,17 @@
 <resources>
-    <string name="app_name">mercado_ibra</string>
+    <string name="app_name">mercado ibra</string>
     <string name="base_url">https://api.mercadolibre.com/sites/</string>
     <string name="base_url_not_side">https://api.mercadolibre.com/</string>
 
-    <string name="category_title">bienvenido a mercado ibra</string>
-    <string name="category_sub_title">selecciones las categorias de productos de su interes</string>
+    <string name="sites_title">Bienvenido a Mercado Ibra</string>
+    <string name="sites_sub_title">Seleccione el pais donde se encuentra</string>
 
     <string name="fragment_detail_sold_quantity">%d unidades vendidas</string>
     <string name="fragment_detail_available_quantity">%d unidades disponible</string>
-    <string name="price_symbol">$ %d</string>
+    <string name="price_concat">%s %s</string>
     
     <string name="free_shipping">Envio Gratis</string>
+    <string name="home_item_not_found">No se encontraron resultados \n de su busqueda</string>
+    <string name="search_copy">buscar</string>
+    <string name="detail_ubication_seller_title">Ubicaciòn del vendedor:</string>
 </resources>

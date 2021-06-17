@@ -22,11 +22,19 @@ class CategoryView(private val viewBinding: ItemCategoryBinding) :
         val data = (dataItem as ViewTypeVh.ProductCategories).item
         viewBinding.apply {
             textViewTitle.text = data.name
-            if (data.isSelected) {
-                textViewTitle.setTextColor(viewBinding.root.context.getColor(R.color.white))
-                cardViewContainer.setCardBackgroundColor(viewBinding.root.context.getColor(R.color.black))
+            textViewTitle.setTextColor(
+                if (data.isSelected) viewBinding.root.context.getColor(R.color.white) else viewBinding.root.context.getColor(
+                    R.color.blueDark
+                )
+            )
+            cardViewContainer.setCardBackgroundColor(
+                if (data.isSelected) viewBinding.root.context.getColor(
+                    R.color.blueDark
+                ) else viewBinding.root.context.getColor(R.color.white)
+            )
+            root.setOnClickListener {
+                action.invoke(EventsAdapter.SelectedItem(adapterPosition, dataItem))
             }
         }
-
     }
 }
