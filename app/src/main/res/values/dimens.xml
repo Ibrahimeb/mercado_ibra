@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--    Text Sizes-->
+    <dimen name="rds_title_xxxsize">48sp</dimen>
+    <dimen name="rds_title_xxsize">40sp</dimen>
+    <dimen name="rds_title_xsize">32sp</dimen>
+    <dimen name="rds_title_size">26sp</dimen>
+    <dimen name="rds_headline_size">20sp</dimen>
+    <dimen name="rds_gold_play_size">18sp</dimen>
+    <dimen name="rds_body_size">16sp</dimen>
+    <dimen name="rds_caption_xsize">14sp</dimen>
+    <dimen name="rds_caption_size">12sp</dimen>
+    <dimen name="rds_small_size">10sp</dimen>
+
+    <!--    Spacing-->
+    <dimen name="rds_spacing_empty">0dp</dimen>
+    <dimen name="rds_spacing_1_c">0.5dp</dimen>
+    <dimen name="rds_spacing_1_b">1dp</dimen>
+    <dimen name="rds_spacing_1">4dp</dimen>
+    <dimen name="rds_spacing_2">8dp</dimen>
+    <dimen name="rds_spacing_3">12dp</dimen>
+    <dimen name="rds_spacing_4">16dp</dimen>
+    <dimen name="rds_spacing_5">20dp</dimen>
+    <dimen name="rds_spacing_6">24dp</dimen>
+    <dimen name="rds_spacing_7">28dp</dimen>
+    <dimen name="rds_spacing_8">32dp</dimen>
+    <dimen name="rds_spacing_9">36dp</dimen>
+    <dimen name="rds_spacing_10">40dp</dimen>
+    <dimen name="rds_spacing_11">44dp</dimen>
+    <dimen name="rds_spacing_12">48dp</dimen>
+    <dimen name="rds_spacing_13">52dp</dimen>
+    <dimen name="rds_spacing_14">56dp</dimen>
+    <dimen name="rds_spacing_15">60dp</dimen>
+    <dimen name="rds_spacing_16">64dp</dimen>
+    <dimen name="rds_spacing_17">68dp</dimen>
+    <dimen name="rds_spacing_18">72dp</dimen>
+    <dimen name="rds_spacing_20">80dp</dimen>
+    <dimen name="rds_spacing_21">84dp</dimen>
+    <dimen name="rds_spacing_22">88dp</dimen>
+    <dimen name="rds_spacing_23">92dp</dimen>
+    <dimen name="rds_spacing_24">96dp</dimen>
+    <dimen name="rds_spacing_25">100dp</dimen>
+    <dimen name="rds_spacing_26">104dp</dimen>
+    <dimen name="rds_spacing_27">108dp</dimen>
+    <dimen name="rds_spacing_28">112dp</dimen>
+    <dimen name="rds_spacing_29">116dp</dimen>
+    <dimen name="rds_spacing_30">120dp</dimen>
+    <dimen name="rds_spacing_31">124dp</dimen>
+    <dimen name="rds_spacing_32">128dp</dimen>
+
+    <!--  Icon Size-->
+    <dimen name="rds_icon_size_8">8dp</dimen>
+    <dimen name="rds_icon_size_12">12dp</dimen>
+    <dimen name="rds_icon_size_16">16dp</dimen>
+    <dimen name="rds_icon_size_20">20dp</dimen>
+    <dimen name="rds_icon_size_24">24dp</dimen>
+    <dimen name="rds_icon_size_32">32dp</dimen>
+    <dimen name="rds_icon_size_40">40dp</dimen>
+    <dimen name="rds_icon_size_48">48dp</dimen>
+    <dimen name="rds_icon_size_64">64dp</dimen>
+    <dimen name="rds_icon_size_72">72dp</dimen>
+    <dimen name="rds_icon_size_80">80dp</dimen>
+    <dimen name="rds_icon_size_100">100dp</dimen>
+    <dimen name="rds_icon_size_150">150dp</dimen>
+    <dimen name="rds_icon_size_200">200dp</dimen>
+
+
+</resources>
