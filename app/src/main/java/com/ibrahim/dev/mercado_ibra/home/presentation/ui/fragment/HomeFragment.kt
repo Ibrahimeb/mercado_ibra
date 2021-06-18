@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +14,7 @@ import com.ibrahim.dev.mercado_ibra.commons.adapter.EventsAdapter
 import com.ibrahim.dev.mercado_ibra.commons.adapter.GeneralAdapter
 import com.ibrahim.dev.mercado_ibra.commons.adapter.ViewTypeVh
 import com.ibrahim.dev.mercado_ibra.commons.utils.hide
+import com.ibrahim.dev.mercado_ibra.commons.utils.saveLaunch
 import com.ibrahim.dev.mercado_ibra.commons.utils.show
 import com.ibrahim.dev.mercado_ibra.commons.utils.showOrHide
 import com.ibrahim.dev.mercado_ibra.databinding.FragmentHomeBinding
@@ -50,7 +50,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getCategoriesBySites(args.sitesCode)
+        viewModel.categoriesListLiveData.saveLaunch {
+            viewModel.getCategoriesBySites(args.sitesCode)
+        }
         initRecyclerView()
         observerLiveData()
         onClickListener()
@@ -74,38 +76,35 @@ class HomeFragment : Fragment() {
     }
 
     private fun observerLiveData() {
-        viewModel.homeEventsLiveData.observe(viewLifecycleOwner, { event ->
-            when (event) {
-                is HomeEvents.SuccessRequest -> {
-                    binding.apply {
-                        recyclerView.show()
-                        includeError.root.hide()
+        viewModel.apply {
+            homeEventsLiveData.observe(viewLifecycleOwner, { event ->
+                when (event) {
+                    is HomeEvents.SuccessRequest -> {
+                        binding.apply {
+                            recyclerView.show()
+                            includeError.root.hide()
+                        }
+                        homeAdapter.submitList(event.listItem)
                     }
-                    handlerSuccessData(event.listItem)
-                }
-                is HomeEvents.ErrorRequest -> {
-                    binding.apply {
-                        includeError.textViewErrorMsg.text = event.msg
-                        rvGroup.hide()
-                        includeError.root.show()
+                    is HomeEvents.ErrorRequest -> {
+                        binding.apply {
+                            includeError.textViewErrorMsg.text = event.msg
+                            rvGroup.hide()
+                            includeError.root.show()
+                        }
+                    }
+                    is HomeEvents.Loading -> binding.progressBar.showOrHide(event.isLoading)
+                    is HomeEvents.NotFountItems -> {
+                        binding.apply {
+                            rvGroup.hide()
+                            includeError.root.show()
+                        }
                     }
                 }
-                is HomeEvents.Loading -> binding.progressBar.showOrHide(event.isLoading)
-                is HomeEvents.NotFountItems -> {
-                    binding.apply {
-                        rvGroup.hide()
-                        includeError.root.show()
-                    }
-                }
-            }
-        })
-    }
-
-    private fun handlerSuccessData(viewTypeVh: List<ViewTypeVh>) {
-        when (viewTypeVh[0]) {
-            is ViewTypeVh.ProductCategories -> categoryAdapter.submitList(viewTypeVh)
-            is ViewTypeVh.ProductListBySearch -> homeAdapter.submitList(viewTypeVh)
-            else -> Unit
+            })
+            categoriesListLiveData.observe(viewLifecycleOwner, {
+                categoryAdapter.submitList(mapToViewTypeCategories(it))
+            })
         }
     }
 
@@ -148,9 +147,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun mapNewItemSelected(pos: Int, item: CategoriesModel) {
-        val listAux: MutableList<CategoriesModel> = mutableListOf()
+        var listAux: MutableList<CategoriesModel> = mutableListOf()
         viewModel.lastCodeSelectedItem = item.code
-        listAux.addAll(viewModel.listCategories)
+        viewModel.categoriesListLiveData.value?.let {
+            listAux = it.toMutableList()
+        }
         listAux.apply {
             removeAt(pos)
             add(0, item.copy(code = item.code, name = item.name, isSelected = true))

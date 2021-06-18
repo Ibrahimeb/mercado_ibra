@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".5" />
+        app:layout_constraintGuide_percent=".6" />
 
     <TextView
         android:id="@+id/textView_price"
@@ -131,6 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:progressTint="@color/blueDark"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

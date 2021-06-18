@@ -10,6 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.ibrahim.dev.mercado_ibra.R
 import com.ibrahim.dev.mercado_ibra.commons.utils.hide
+import com.ibrahim.dev.mercado_ibra.commons.utils.saveLaunch
 import com.ibrahim.dev.mercado_ibra.commons.utils.show
 import com.ibrahim.dev.mercado_ibra.commons.utils.showOrHide
 import com.ibrahim.dev.mercado_ibra.databinding.FragmentProductDetailBinding
@@ -37,7 +38,11 @@ class ProductDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getDetailProduct(args.productId)
+        viewModel.apply {
+            eventsDetailsLiveData.saveLaunch {
+                getDetailProduct(args.productId)
+            }
+        }
         liveDataObserver()
     }
 

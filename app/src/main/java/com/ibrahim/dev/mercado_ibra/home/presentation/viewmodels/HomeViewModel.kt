@@ -28,8 +28,10 @@ class HomeViewModel @Inject constructor(
     private val _homeEventsLiveData = MutableLiveData<HomeEvents>()
     val homeEventsLiveData: LiveData<HomeEvents> get() = _homeEventsLiveData
 
+    private val _categoriesListLiveData = MutableLiveData<List<CategoriesModel>>()
+    val categoriesListLiveData: LiveData<List<CategoriesModel>> get() = _categoriesListLiveData
+
     var lastCodeSelectedItem: String = ""
-    val listCategories: MutableList<CategoriesModel> = mutableListOf()
 
     fun getCategoriesBySites(sitesCode: String) {
         viewModelScope.launch {
@@ -52,12 +54,12 @@ class HomeViewModel @Inject constructor(
         sitesCode: String
     ) {
         launchSearchByCategory(listCategories[0].code, sitesCode)
-        this.listCategories.addAll(listCategories)
         lastCodeSelectedItem = listCategories[0].code
-        _homeEventsLiveData.value =
-            HomeEvents.SuccessRequest(listCategories.map { item ->
-                ViewTypeVh.ProductCategories(item)
-            })
+        _categoriesListLiveData.value = listCategories
+    }
+
+    fun mapToViewTypeCategories(list:List<CategoriesModel>): List<ViewTypeVh.ProductCategories> {
+        return list.map { ViewTypeVh.ProductCategories(it) }
     }
 
     fun launchSearchByCategory(category: String, sitesCode: String) {

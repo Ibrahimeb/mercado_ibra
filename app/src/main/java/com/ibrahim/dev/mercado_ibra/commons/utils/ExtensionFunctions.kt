@@ -49,3 +49,9 @@ fun Context.makeToast(msg: String) {
 fun <T> LiveData<T>.test(): TestObserver<T> {
     return TestObserver.test(this)
 }
+
+fun <T> LiveData<T>.saveLaunch(actions: () -> Unit) {
+    if (this.value == null) {
+        actions.invoke()
+    }
+}
