@@ -14,6 +14,7 @@ import com.ibrahim.dev.mercado_ibra.home.domain.models.ProductListModel
 import com.ibrahim.dev.mercado_ibra.home.presentation.contract.HomeEvents
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.zip
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -32,7 +33,8 @@ class HomeViewModel @Inject constructor(
 
     fun getCategoriesBySites(sitesCode: String) {
         viewModelScope.launch {
-            categoriesUseCase.getCategories(sitesCode).collect { status ->
+            categoriesUseCase.getCategories(sitesCode)
+                .collect { status ->
                 when (status) {
                     is RequestStatus.Loading -> _homeEventsLiveData.value = HomeEvents.Loading(true)
                     is RequestStatus.Error -> {

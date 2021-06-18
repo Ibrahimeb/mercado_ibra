@@ -5,6 +5,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.LiveData
 
 fun Context.hasNetwork(): Boolean {
     val connectivityManager: ConnectivityManager =
@@ -43,4 +44,8 @@ fun View.hide() {
 
 fun Context.makeToast(msg: String) {
     Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+}
+
+fun <T> LiveData<T>.test(): TestObserver<T> {
+    return TestObserver.test(this)
 }

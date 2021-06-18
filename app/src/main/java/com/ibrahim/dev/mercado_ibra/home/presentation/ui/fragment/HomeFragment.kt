@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -148,6 +149,7 @@ class HomeFragment : Fragment() {
 
     private fun mapNewItemSelected(pos: Int, item: CategoriesModel) {
         val listAux: MutableList<CategoriesModel> = mutableListOf()
+        viewModel.lastCodeSelectedItem = item.code
         listAux.addAll(viewModel.listCategories)
         listAux.apply {
             removeAt(pos)

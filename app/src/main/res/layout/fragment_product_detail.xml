@@ -141,7 +141,7 @@
         android:id="@+id/success_gruop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="imageView_product_img"
+        app:constraint_referenced_ids="imageView_product_img,textView_city,textView_title_seller_ub"
         />
 
 
