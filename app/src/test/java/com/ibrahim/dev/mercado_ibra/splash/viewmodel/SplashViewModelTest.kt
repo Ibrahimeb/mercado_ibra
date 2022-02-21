@@ -67,6 +67,6 @@ class SplashViewModelTest {
             emit(requestStatus)
         })
         viewModel.getSites()
-        observer.assertValueAt(0){ it is SplashEvents.ErrorCategoriesRequest }
+        observer.assertValueAt(0){ it is SplashEvents.ErrorSitesRequest }
     }
 }

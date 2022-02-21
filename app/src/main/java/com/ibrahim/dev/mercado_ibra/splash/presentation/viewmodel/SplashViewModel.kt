@@ -26,7 +26,7 @@ class SplashViewModel @Inject constructor(
                         delay(1000)
                         _eventsSplashLiveData.postValue(SplashEvents.SitesSuccess(status.value))
                     }
-                    is RequestStatus.Error -> _eventsSplashLiveData.postValue(SplashEvents.ErrorCategoriesRequest)
+                    is RequestStatus.Error -> _eventsSplashLiveData.postValue(SplashEvents.ErrorSitesRequest)
                     else -> Unit
                 }
             }

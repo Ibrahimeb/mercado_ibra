@@ -42,10 +42,6 @@ fun View.hide() {
     this.visibility = View.GONE
 }
 
-fun Context.makeToast(msg: String) {
-    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
-}
-
 fun <T> LiveData<T>.test(): TestObserver<T> {
     return TestObserver.test(this)
 }
